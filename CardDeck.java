@@ -1,4 +1,3 @@
-
 package mru.game.controller;
 
 import java.util.ArrayList;
