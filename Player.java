@@ -45,7 +45,6 @@ public class Player {
 	}
 
 	// Returns a readable version of the player.
-	@Override
 	public String toString() {
 		return name + " | Balance: " + balance + " $ | Wins: " + numberOfWins;
 	}
