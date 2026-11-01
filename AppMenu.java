@@ -69,6 +69,30 @@ public class AppMenu {
 			System.out.println("\nInvalid choice, please try again.\n");
 		}
 	}
+
+		// Asks for the player's name and keeps asking until it is valid
+	public String promptName() {
+		String name;
+
+		while (true) {
+			System.out.print("What is your name: ");
+			name = input.nextLine().trim(); 
+			// trim removes the end/start of the input btw (cleans it up)
+
+			// a name can't be empty, and can't have a comma because commas separate the fields in CasinoInfo.txt
+			if (!name.isEmpty() && !name.contains(",")) {
+				return name;
+			}
+
+			System.out.println("\nInvalid name, please try again.\n");
+		}
+	}
+
+	// Waits for the user to press Enter before continuing
+	public void pressEnter() {
+		System.out.print("\nPress \"Enter\" to continue...");
+		input.nextLine();
+	}
 }
 
 
