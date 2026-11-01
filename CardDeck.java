@@ -1,3 +1,5 @@
+// Noor pt.3 (15 min)
+
 package mru.game.controller;
 
 import java.util.ArrayList;
@@ -55,5 +57,19 @@ public class CardDeck {
 	 */
 	public ArrayList<Card> getDeck() {
 		return deck;
+	}
+	 // Draws one card from the deck; if the deck is empty, a fresh shuffled deck is created first
+	 // then we have to return the card!
+	
+	public Card drawCard() {
+		
+		// when every card has been dealt, rebuild and reshuffle all 52 cards
+		if (deck.isEmpty()) {
+			createDeck();
+			shuffleDeck();
+		}
+		
+		// take the last card off the list and hand it back
+		return deck.remove(deck.size() - 1);
 	}
 }
