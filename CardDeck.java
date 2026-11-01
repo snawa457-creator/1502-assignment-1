@@ -1,5 +1,5 @@
 // Noor pt.3 (15 min)
-
+// so basically this class shuffles the deck and gives the player a card 
 package mru.game.controller;
 
 import java.util.ArrayList;
