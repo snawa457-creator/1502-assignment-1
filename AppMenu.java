@@ -43,6 +43,32 @@ public class AppMenu {
 			System.out.println("\nInvalid choice, please try again.\n");
 		}
 	}
+
+		// Ok so now I'm working on the sub-menu where player asks for liek the leaderboard
+	   // Show the search sub-menu and keeps asking until the user types t, n or b
+	public String showSearchMenu() {
+		String choice;
+
+		// basically I made a while loop that will keep repeating this menu unless the player a valid choice
+		while (true) {
+			System.out.println("Select one of these options:\n");
+			System.out.println("\t(T) Top player (Most number of wins)");
+			System.out.println("\t(N) Looking for a Name");
+			System.out.println("\t(B) Back to Main menu");
+			System.out.print("\nEnter a choice: ");
+
+			// clean up the input
+			choice = input.nextLine().trim().toLowerCase();
+
+			// valid choice: send it back to whoever called this method
+			if (choice.equals("t") || choice.equals("n") || choice.equals("b")) {
+				return choice;
+			}
+
+			// invalid choice: show an error, then the loop shows the menu again
+			System.out.println("\nInvalid choice, please try again.\n");
+		}
+	}
 }
 
 
