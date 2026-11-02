@@ -1,21 +1,35 @@
-
 package mru.game.controller;
 import mru.game.model.Hand;
 import mru.game.model.Player;
 import mru.game.view.AppMenu;
 
+ /**
+ * This class runs the Blackjack game
+ * It handles the cards, turns, bets and game results
+ */
 public class BlackjackGame {
     // module 3, private field to store the deck of cards
     private CardDeck deck;
     // module 3, private field to use the menu for player input
     private AppMenu menu;
     // module 3, constructor creates the deck and sets the menu
+
+    /**
+     * Creates a new Blackjack game with a deck and menu
+     * @param menu the menu used for player input
+     */
     public BlackjackGame(AppMenu menu) {
         deck = new CardDeck();
         this.menu = menu;
     }
 
     // lab 4 p3, method to start the game for a player
+
+     /**
+     * Starts the Blackjack game for a player
+     * Lets them play multiple rounds until they stop or run out of money
+     * @param player the player currently playing
+     */
     public void playGame(Player player) {
 
         boolean playing = true; // module 1, boolean to check if the player is still playing
@@ -58,6 +72,12 @@ public class BlackjackGame {
     }
 
     // lab 4 p3, method to play one round of blackjack
+
+    /**
+     * Plays one round of Blackjack
+     * Deals the cards, checks the scores and updates the player's balance
+     * @param player the player playing the round
+     */
     private void playRound(Player player) {
 
         // module 3, creates a new hand for the player and dealer
@@ -211,6 +231,11 @@ public class BlackjackGame {
     }
 
     // lab 4 p3, method to display all the cards in a hand
+
+     /**
+     * Displays all the cards in the player's or dealer's hand
+     * @param hand the hand containing the cards to display
+     */
     private void showHand(Hand hand) {
 
         // module 1, enhanced for loop goes through each card
