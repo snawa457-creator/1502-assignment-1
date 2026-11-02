@@ -1,4 +1,4 @@
-// Noor pt.4 (~30 min)
+// Noor pt.4 (~1 hr)
 
 package mru.game.view;
 
@@ -92,6 +92,48 @@ public class AppMenu {
 	public void pressEnter() {
 		System.out.print("\nPress \"Enter\" to continue...");
 		input.nextLine();
+	}
+
+	// ok now the money HEHEHEHEHEH
+	// Asks how much to bet; must be a whole number from $2 up to the player's balance
+
+	// Takes the player's balance as input and returns the bet as an int
+	public int promptBet(int balance) {
+		while (true) {
+			System.out.print("How much do you want to bet this round? ");
+			String text = input.nextLine().trim(); // clean up input
+
+			// turn the text into a number; letters like "abc" would crash without the catch below
+			try {
+				int bet = Integer.parseInt(text);
+
+				// valid bet: send it back to whoever called this method
+				if (bet >= 2 && bet <= balance) {
+					return bet;
+				}
+				System.out.println("\nBet must be between $2 and $" + balance + ".\n");
+			} catch (NumberFormatException e) {
+				System.out.println("\nPlease enter a whole number.\n");
+			}
+		}
+	}
+
+	// Shows the Hit/Stand menu and returns "1" (hit) or "2" (stand)
+	public String showHitStandMenu() {
+		while (true) {
+			System.out.println("Select an option:\n");
+			System.out.println("\t1.Hit");
+			System.out.println("\t2.Stand");
+			System.out.print("\nYour choice: ");
+
+			String choice = input.nextLine().trim();
+
+			if (choice.equals("1") || choice.equals("2")) {
+				return choice;
+			}
+
+			System.out.println("\nInvalid choice, please try again.\n");
+		}
 	}
 }
 
