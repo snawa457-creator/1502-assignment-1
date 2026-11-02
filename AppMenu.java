@@ -146,6 +146,32 @@ public int promptBet(double balance) {
 			System.out.println("\nInvalid choice, please try again.\n");
 		}
 	}
+	
+    // lab 4 p3, method to ask if the player wants another round
+    public String showPlayAgainMenu() {
+
+        //module 1 loops, repeats until the player enters a valid choice
+        while (true) {
+
+            // module 1 p6, displays the play again options
+            System.out.println("\nWould you like to play again?");
+            System.out.println("\t1. Play again");
+            System.out.println("\t2. Return to Main Menu");
+            System.out.print("\nYour choice: ");
+
+            //module 1, reads what the player entered
+            String choice = input.nextLine();
+
+            //lab 1 p3, checks if the player entered 1 or 2
+            if (choice.equals("1") || choice.equals("2")) {
+                return choice; // lab 4 p3, returns the valid choice
+            }
+
+            // module 1 p6, displays an error for invalid input
+            System.out.println("\nInvalid choice, please try again.\n");
+        }
+    }
+
 }
 
 
