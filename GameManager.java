@@ -42,7 +42,7 @@ private static final String FILE_PATH = "res/CasinoInfo.txt";
         start();
     }
 
-    private void start() {
+    public void start() {
 
         boolean flag = true; //this flag is asking us whether we want to continue or not.
 
