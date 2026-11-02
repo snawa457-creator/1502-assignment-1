@@ -60,7 +60,7 @@ public class Card {
 	}
 
 	/**
-	 * This method overrides the toString method and shows the dat in the format we want
+	 * This method overrides the toString method and shows the data in the format we want
 	 */
 	public String toString() {
 		
