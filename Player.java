@@ -9,10 +9,11 @@ public class Player {
 	 */
 
 	private String name;
-	private int balance;
+	private double balance; // sn changed int to double
 	private int numberOfWins;
-
-	public Player(String name, int balance, int numberOfWins) {
+	
+// sn changed int balance to double
+	public Player(String name, double balance, int numberOfWins) {
 		// "this" refers to the current Player object, so this.name is the field and name is the value passed into the constructor.
 		this.name = name;
 		this.balance = balance;
@@ -27,12 +28,12 @@ public class Player {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public int getBalance() {
+// changed int to double sn
+	public double getBalance() {
 		return balance;
 	}
-
-	public void setBalance(int balance) {
+// changed int to double sn
+	public void setBalance(double balance) {
 		this.balance = balance;
 	}
 
