@@ -4,22 +4,29 @@ package mru.game.view;
 
 import java.util.Scanner;
 
-public class AppMenu {
-
 	/**
 	 * This class will be used to show the menus and sub menus to the user
-	 * It also prompts the user for the inputs and validates them 
+	  * It also prompts the user for the inputs and validates them 
 	 */
+public class AppMenu {
+
 	
 	// Scanner reads what the user types; private so only AppMenu reads the keyboard.
 	private Scanner input;
 
 	// Constructor: creates the Scanner once, so every method can use it
+	 /**
+	 * Creates the Scanner to read the user's input.
+	 */
 	public AppMenu() {
 		input = new Scanner(System.in);
 	}
 
 	// Shows the main menu and keeps asking until the user types p, s or e
+	 /**
+	 * Shows the main menu until the user enters a valid choice
+	 * @return the selected option p, s, or e
+	 */
 	public String showMainMenu() {
 		String choice;
 
@@ -44,6 +51,10 @@ public class AppMenu {
 
 		// Ok so now I'm working on the sub-menu where player asks for liek the leaderboard
 	   // Show the search sub-menu and keeps asking until the user types t, n or b
+	 /**
+	 * Shows the search menu until the user enters a valid choice.
+	 * @return the selected option t, n, or b
+	 */
 	public String showSearchMenu() {
 		String choice;
 
@@ -68,6 +79,11 @@ public class AppMenu {
 	}
 
     // Asks for the player's name and keeps asking until it is valid
+	 /**
+	 * Asks for the player's name and checks that it is not empty
+	 * and does not contain a comma.
+	 * @return the player's valid name
+	 */
     public String promptName() {
         String name;
 
@@ -93,6 +109,9 @@ public class AppMenu {
 	}
 
 	// Waits for the user to press Enter before continuing
+	 /**
+	 * Pauses the menu until the user presses Enter.
+	 */
 	public void pressEnter() {
 		System.out.print("\nPress \"Enter\" to continue...");
 		input.nextLine();
@@ -102,7 +121,14 @@ public class AppMenu {
 	// Asks how much to bet; must be a whole number from $2 up to the player's balance
 
 	// Takes the player's balance as input and returns the bet as an int
-public int promptBet(double balance) {
+
+	 /**
+	 * Asks the player for a bet and checks that the amount is valid
+	 * The bet must be at least $2 and cannot exceed the player's balance
+	 * @param balance the player's available balance
+	 * @return the valid bet amount
+	 */
+	public int promptBet(double balance) {
 
     while (true) {
 
@@ -131,7 +157,11 @@ public int promptBet(double balance) {
 
 
 	// Shows the Hit/Stand menu and returns "1" (hit) or "2" (stand)
-	public String showHitStandMenu() {
+	 /**
+	 * Shows the Hit and Stand menu during Blackjack.
+	 * @return 1 for Hit or 2 for Stand
+	 */
+		public String showHitStandMenu() {
 		while (true) {
 			System.out.println("Select an option:\n");
 			System.out.println("\t1.Hit");
@@ -148,7 +178,12 @@ public int promptBet(double balance) {
 	}
 	
     // lab 4 p3, method to ask if the player wants another round
-    public String showPlayAgainMenu() {
+    
+	 /**
+	 * Asks if the player wants another round or to return to the main menu.
+	 * @return 1 to play again or 2 to return to the main menu
+	 */
+	public String showPlayAgainMenu() {
 
         //module 1 loops, repeats until the player enters a valid choice
         while (true) {
@@ -173,5 +208,3 @@ public int promptBet(double balance) {
     }
 
 }
-
-
