@@ -15,18 +15,33 @@ public class Hand {
 	public Hand() {
 		cards = new ArrayList<>();
 	}
-
+	
+	 /**
+	 * Adds a card to the hand
+	 * @param card the card being added
+	 */
 	// Add one card to the hand when it is dealt:
 	public void addCard(Card card) {
 		cards.add(card);
 	}
 
 	// Return all the cards in the hand so they can be displayed:
+
+	 /**
+	 * Gets all the cards currently in the hand.
+	 * @return the list of cards in the hand
+	 */
 	public ArrayList<Card> getCards() {
 		return cards;
 	}
 
 	// Part 1: starting values
+
+	 /**
+	 * Calculates the total score of the hand.
+	 * Face cards count as 10 and aces count as 1 or 11.
+	 * @return the total score of the hand
+	 */
 	public int getScore() {
 		int total = 0;
 		boolean hasAce = false;
@@ -57,11 +72,20 @@ public class Hand {
 	}
 
 	// A blackjack (natural) is two cards that add up to 21
+
+	 /**
+	 * Checks if the hand has a natural Blackjack
+	 * @return true if two cards add up to 21 otherwise false
+	 */
 	public boolean isNatural() {
 		return cards.size() == 2 && getScore() == 21;
 	}
 
 	// Bust means the score is over 21, so the hand loses.
+	 /**
+	 * Checks if the hand has gone over 21
+	 * @return true if the score is over 21 otherwise false
+	 */
 	public boolean isBust() {
 		return getScore() > 21;
 	}
