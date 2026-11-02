@@ -1,7 +1,9 @@
 //Sanchia
 
 package mru.game.application;
+import java.io.IOException; //added bc of gamemanager, both need to declare ioexception 
 import mru.game.controller.GameManager; // module 3, packages and imports
+
 public class AppDriver {
 
      /**
