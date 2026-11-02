@@ -64,7 +64,7 @@ public class CardDeck {
 	public Card drawCard() {
 		
 		// when every card has been dealt, rebuild and reshuffle all 52 cards
-		if (deck.isEmpty()) {
+		if (deck.size() == 0) { // module 1 arraylists, lab 1 p3, checks empty deck sn
 			createDeck();
 			shuffleDeck();
 		}
