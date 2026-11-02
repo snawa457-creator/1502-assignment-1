@@ -1,13 +1,13 @@
+//Sanchia
+
 package mru.game.application;
-
-
+import mru.game.controller.GameManager; // module 3, packages and imports
 public class AppDriver {
 
 	public static void main(String[] args) {
 		
-		// This is the starting point of the project!
-		// hint - It usually calls method from GameManager class to start the app, so only one or two lines will be written here
-GameManager game = new GameManager ();
+		GameManager game = new GameManager (); // module 3 p6
+		game.start(); // lab 4 p3, calling methods
 	}
 
 }
