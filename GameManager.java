@@ -1,6 +1,7 @@
 package mru.game.controller;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;//this is from module 1, file handling section
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,7 +11,7 @@ import mru.game.view.AppMenu;
 
 public class GameManager {
 	
-	/* In this class toy'll need these methods:
+	/* In this class you'll need these methods:
 	 * A constructor
 	 * A method to load the txt file into an arraylist (if it exists, so you check if the txt file exists first)
 	 * A save method to store the arraylist into the the txt file 
@@ -29,7 +30,11 @@ private static final String FILE_PATH = "res/CasinoInfo.txt";
     BlackjackGame game;
 
     // Constructor
-    public GameManager() {
+	 /**
+     * Creates GameManager and the player list and menus and loads the player records
+     * @throws IOException if there is a problem loading the file
+     */
+    public GameManager() throws IOException { //sn added ioexception
 
         players = new ArrayList<Player>();
 
@@ -38,11 +43,14 @@ private static final String FILE_PATH = "res/CasinoInfo.txt";
         game = new BlackjackGame(appMen);
 
         loadPlayers();
-
-        start();
+// sn removed start bc AppDriver alr calls it
     }
-
-    public void start() {
+     /**
+     * Starts the main casino menu
+     * lets players play Blackjack, search for players or exit
+     * @throws IOException if there is a problem saving the file
+     */
+    public void start() throws IOException { //sn just added io exceptionn
 
         boolean flag = true; //this flag is asking us whether we want to continue or not.
 
@@ -133,6 +141,11 @@ private static final String FILE_PATH = "res/CasinoInfo.txt";
     }
 
     //Searches for a player using their name.
+/**
+     * Searches for a player using their name
+     * @param name the name of the player being searched
+     * @return the player if found or returns null if not found
+     */
     private Player searchPlayer(String name) {
 
         for (Player player : players) { //Goes through the players in the ArrayList.
@@ -147,6 +160,11 @@ private static final String FILE_PATH = "res/CasinoInfo.txt";
     }
 
     //Finds and displays the player with the most wins.
+
+	/**
+ 	* Finds the player with the highest wins
+ 	* Displays all players who have the same highest number of wins
+	*/
     private void findTopPlayers() {
 
         if (players.size() == 0) {
@@ -181,8 +199,12 @@ private static final String FILE_PATH = "res/CasinoInfo.txt";
 
     //This is responsible for checking whether the file exists or not.
     //If it exists, it is going to open it.
-
-    private void loadPlayers() throws Exception {
+	/**
+    * Loads the player records from CasinoInfo.txt
+    * Reads each line and creates a Player 
+    * @throws IOException if there is a problem reading the file
+    */
+    private void loadPlayers() throws IOException {
 
         myFile = new File(FILE_PATH);
 
@@ -209,7 +231,12 @@ private static final String FILE_PATH = "res/CasinoInfo.txt";
     }
 
     //This is responsible for saving all the player information into the file.
-    private void savePlayers() throws Exception {
+     /**
+     * Saves all player records to CasinoInfo.txt
+     * Writes each player's name, balance and wins into the file
+     * @throws IOException if there is a problem writing to the file
+     */
+	private void savePlayers() throws IOException {
 
         FileWriter writer = new FileWriter(myFile); //Now the file is open for writing.
 
