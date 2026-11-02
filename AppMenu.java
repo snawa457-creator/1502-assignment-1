@@ -30,9 +30,7 @@ public class AppMenu {
 			System.out.println("\t(E) Exit");
 			System.out.print("\nEnter a choice: ");
 
-			// trim removes extra spaces, toLowerCase makes P and p the same
-			// basically, we clean up the input!
-			choice = input.nextLine().trim().toLowerCase();
+			choice = input.nextLine().toLowerCase(); // lab 3 p3, converts to lowercase
 
 			// valid choice: send it back to whoever called this method
 			if (choice.equals("p") || choice.equals("s") || choice.equals("e")) {
@@ -58,8 +56,7 @@ public class AppMenu {
 			System.out.print("\nEnter a choice: ");
 
 			// clean up the input
-			choice = input.nextLine().trim().toLowerCase();
-
+			choice = input.nextLine().toLowerCase(); // lab 3 p3, converts to lowercase
 			// valid choice: send it back to whoever called this method
 			if (choice.equals("t") || choice.equals("n") || choice.equals("b")) {
 				return choice;
@@ -70,18 +67,25 @@ public class AppMenu {
 		}
 	}
 
-		// Asks for the player's name and keeps asking until it is valid
-	public String promptName() {
-		String name;
+    // Asks for the player's name and keeps asking until it is valid
+    public String promptName() {
+        String name;
 
-		while (true) {
-			System.out.print("What is your name: ");
-			name = input.nextLine().trim(); 
-			// trim removes the end/start of the input btw (cleans it up)
+        while (true) {
+            System.out.print("What is your name: ");
+            name = input.nextLine(); // module 1, reads input
 
-			// a name can't be empty, and can't have a comma because commas separate the fields in CasinoInfo.txt
-			if (!name.isEmpty() && !name.contains(",")) {
-				return name;
+            boolean valid = name.length() > 0; // module 1 String, lab 3 p2
+
+            // checks each character to make sure the name doesn't have a comma
+            for (int i = 0; i < name.length(); i++) { // lab 2 p3
+                if (name.charAt(i) == ',') { // lab 3 p2, checks characters
+                    valid = false;
+                }
+            }
+			
+			if (valid) {
+			    return name;
 			}
 
 			System.out.println("\nInvalid name, please try again.\n");
@@ -98,25 +102,33 @@ public class AppMenu {
 	// Asks how much to bet; must be a whole number from $2 up to the player's balance
 
 	// Takes the player's balance as input and returns the bet as an int
-	public int promptBet(int balance) {
-		while (true) {
-			System.out.print("How much do you want to bet this round? ");
-			String text = input.nextLine().trim(); // clean up input
+public int promptBet(double balance) {
 
-			// turn the text into a number; letters like "abc" would crash without the catch below
-			try {
-				int bet = Integer.parseInt(text);
+    while (true) {
 
-				// valid bet: send it back to whoever called this method
-				if (bet >= 2 && bet <= balance) {
-					return bet;
-				}
-				System.out.println("\nBet must be between $2 and $" + balance + ".\n");
-			} catch (NumberFormatException e) {
-				System.out.println("\nPlease enter a whole number.\n");
-			}
-		}
-	}
+        System.out.print("How much do you want to bet this round? ");
+        String text = input.nextLine(); // module 1 files, reads string/input
+
+        boolean valid = text.length() > 0; // lab 3 p2, checks input length
+
+        for (int i = 0; i < text.length(); i++) { // lab 2 p3
+            if (!Character.isDigit(text.charAt(i))) { // lab 3 p2
+                valid = false;
+            }
+        }
+
+        if (valid && text.length() <= 9) { // lab 1 p2, limits number length
+            int bet = Integer.parseInt(text); // module 1 string conversion
+
+            if (bet >= 2 && bet <= balance) { // lab 1 p3, checks bet amount
+                return bet;
+            }
+        }
+
+        System.out.println("Invalid bet, please try again."); // module 1 p6
+    }
+}
+
 
 	// Shows the Hit/Stand menu and returns "1" (hit) or "2" (stand)
 	public String showHitStandMenu() {
@@ -126,8 +138,7 @@ public class AppMenu {
 			System.out.println("\t2.Stand");
 			System.out.print("\nYour choice: ");
 
-			String choice = input.nextLine().trim();
-
+			String choice = input.nextLine(); // module 1, reads input
 			if (choice.equals("1") || choice.equals("2")) {
 				return choice;
 			}
