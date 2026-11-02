@@ -58,7 +58,13 @@ public class CardDeck {
 	public ArrayList<Card> getDeck() {
 		return deck;
 	}
-	 // Draws one card from the deck; if the deck is empty, a fresh shuffled deck is created first
+	 
+/**
+* Draws one card from the deck.
+* Creates and shuffles a new deck if there are no cards left.
+* @return the card drawn from the deck
+*/
+	// Draws one card from the deck; if the deck is empty, a fresh shuffled deck is created first
 	 // then we have to return the card!
 	
 	public Card drawCard() {
